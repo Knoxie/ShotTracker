@@ -12,5 +12,13 @@
     <string name="title_activity_vault">The Vault</string>
     <string name="TheVault">The Vault</string>
     <string name="Search">Search</string>
+    <string name="title_activity_profile">Profile Activity</string>
+    <string name="Age">Age</string>
+    <string name="YearsShooting">Years Shooting</string>
+    <string name="title_activity_gun_viewer">GunViewerActivity</string>
+    <string name="Caliber">Caliber</string>
+    <string name="Ammunition">Ammunition</string>
+    <string name="Manufactured">Manufactured</string>
+    <string name="Reloaded">Reloaded</string>
 
 </resources>

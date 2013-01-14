@@ -26,6 +26,14 @@
             android:name="com.knoxhouse.shottracker.VaultActivity"
             android:label="@string/title_activity_vault" >
         </activity>
+        <activity
+            android:name="com.knoxhouse.shottracker.ProfileActivity"
+            android:label="@string/title_activity_profile" >
+        </activity>
+        <activity
+            android:name="com.knoxhouse.shottracker.GunViewerActivity"
+            android:label="@string/title_activity_gun_viewer" >
+        </activity>
     </application>
 
 </manifest>
