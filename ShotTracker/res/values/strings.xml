@@ -2,7 +2,15 @@
 <resources>
 
     <string name="app_name">ShotTracker</string>
-    <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="SHOT">SHOT</string>
+    <string name="TRACKER">TRACKER</string>
+    <string name="GunVault">Gun Vault</string>
+    <string name="ShooterProfile">Shooter Profile</string>
+    <string name="RangeDay">Range Day</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_vault">The Vault</string>
+    <string name="TheVault">The Vault</string>
+    <string name="Search">Search</string>
 
 </resources>
