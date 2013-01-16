@@ -16,7 +16,6 @@ public final class R {
         public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
-        public static final int ShooterProfile=0x7f07000d;
         public static final int imageView1=0x7f070000;
         public static final int imgShotTracker=0x7f07000a;
         public static final int lblAge=0x7f070011;
@@ -37,6 +36,7 @@ public final class R {
         public static final int txtLastName=0x7f070010;
         public static final int txtRangeDay=0x7f07000e;
         public static final int txtSearch=0x7f070016;
+        public static final int txtShooterProfile=0x7f07000d;
         public static final int txtShot=0x7f070009;
         public static final int txtTheVault=0x7f070015;
         public static final int txtTracker=0x7f07000b;
@@ -50,9 +50,8 @@ public final class R {
     }
     public static final class menu {
         public static final int activity_gun_viewer=0x7f060000;
-        public static final int activity_main_screen=0x7f060001;
-        public static final int activity_profile=0x7f060002;
-        public static final int activity_vault=0x7f060003;
+        public static final int activity_profile=0x7f060001;
+        public static final int activity_vault=0x7f060002;
     }
     public static final class string {
         public static final int Age=0x7f04000c;
