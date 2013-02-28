@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.knoxhouse.shottracker.MainScreenActivity"
+            android:name="com.shottrackerapp.MainScreenActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,15 +23,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.knoxhouse.shottracker.VaultActivity"
+            android:name="com.shottrackerapp.VaultActivity"
             android:label="@string/title_activity_vault" >
         </activity>
         <activity
-            android:name="com.knoxhouse.shottracker.ProfileActivity"
+            android:name="com.shottrackerapp.ProfileActivity"
             android:label="@string/title_activity_profile" >
         </activity>
         <activity
-            android:name="com.knoxhouse.shottracker.GunViewerActivity"
+            android:name="com.shottrackerapp.GunViewerActivity"
             android:label="@string/title_activity_gun_viewer" >
         </activity>
     </application>

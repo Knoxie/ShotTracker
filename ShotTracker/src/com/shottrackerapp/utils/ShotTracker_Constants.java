@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.knoxhouse.shottracker.utils;
+package com.shottrackerapp.utils;
 
 import android.os.Environment;
 

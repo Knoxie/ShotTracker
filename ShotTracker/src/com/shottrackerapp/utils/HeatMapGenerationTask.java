@@ -1,7 +1,7 @@
 /**
  * HeatMapGenerator.java
  */
-package com.knoxhouse.shottracker.utils;
+package com.shottrackerapp.utils;
 
 import java.io.File;
 import java.io.IOException;

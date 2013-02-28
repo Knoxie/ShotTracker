@@ -1,4 +1,6 @@
-package com.knoxhouse.shottracker;
+package com.shottrackerapp;
+
+import com.knoxhouse.shottracker.R;
 
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +20,11 @@ public class MainScreenActivity extends Activity {
         txtGunVault.setOnClickListener(onClickListenerGunVault);
         
         TextView txtShooterProfile = (TextView)findViewById(R.id.txtShooterProfile);
+        txtShooterProfile.setOnClickListener(onClickListenerShooterProfile);
+        
+        TextView txtRangeDay = (TextView)findViewById(R.id.txtRangeDay);
+        txtRangeDay.setOnClickListener(onClickListenerGunViewer);
+        
     }
     
     OnClickListener onClickListenerGunVault = new OnClickListener() {
@@ -36,5 +43,11 @@ public class MainScreenActivity extends Activity {
     	}
     };
     
-    
+    OnClickListener onClickListenerGunViewer = new OnClickListener() {
+    	@Override
+    	public void onClick(View v) {
+    		Intent intent = new Intent(MainScreenActivity.this, GunViewerActivity.class);
+    		startActivity(intent);
+    	}
+    };
 }
