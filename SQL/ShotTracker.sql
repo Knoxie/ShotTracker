@@ -1,0 +1,16 @@
+CREATE TABLE [action] (
+[id] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,
+[action] NVARCHAR(30)  NOT NULL,
+[isManualOperation] BOOLEAN  NOT NULL,
+[isRepeating] BOOLEAN  NOT NULL,
+[description] TEXT  NOT NULL
+);
+
+CREATE TABLE [caliber] (
+[id] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,
+[caliber_number] NVARCHAR(15)  NOT NULL,
+[manufacturer] NVARCHAR(100)  NOT NULL,
+[unit] NVARCHAR(1)  NOT NULL,
+[isBlackPowder] BOOLEAN  NOT NULL,
+[isCenterFire] BOOLEAN  NOT NULL
+);
