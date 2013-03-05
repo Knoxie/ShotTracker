@@ -1,16 +1,47 @@
-CREATE TABLE [action] (
-[id] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,
-[action] NVARCHAR(30)  NOT NULL,
-[isManualOperation] BOOLEAN  NOT NULL,
-[isRepeating] BOOLEAN  NOT NULL,
-[description] TEXT  NOT NULL
+
+CREATE TABLE [Action] (
+[id] INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,
+[action] nvARCHAR(50)  UNIQUE NOT NULL
 );
 
-CREATE TABLE [caliber] (
-[id] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,
-[caliber_number] NVARCHAR(15)  NOT NULL,
-[manufacturer] NVARCHAR(100)  NOT NULL,
-[unit] NVARCHAR(1)  NOT NULL,
-[isBlackPowder] BOOLEAN  NOT NULL,
-[isCenterFire] BOOLEAN  NOT NULL
+CREATE TABLE [Caliber] (
+[id] INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,
+[caliber] NVARCHAR(50)  UNIQUE NOT NULL
+
 );
+
+CREATE TABLE [Country] (
+[id] INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,
+[country] NVARCHAR(30)  UNIQUE NOT NULL
+);
+
+CREATE TABLE [Weapon] (
+[id] INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,
+[weapon] NVARCHAR(50)  UNIQUE NOT NULL
+);
+
+CREATE TABLE [WeaponAction] (
+[weapon_id] iNTEGER  NOT NULL,
+[action_id] INTEGER  NOT NULL,
+PRIMARY KEY ([weapon_id],[action_id]),
+FOREIGN KEY(weapon_id) REFERENCES Weapon(id),
+FOREIGN KEY(action_id) REFERENCES Action(id)
+);
+
+CREATE TABLE [WeaponCaliber] (
+[weapon_id] INTEGER  NOT NULL,
+[caliber_id] INTEGER  NOT NULL,
+PRIMARY KEY ([weapon_id],[caliber_id]),
+FOREIGN KEY(weapon_id) REFERENCES Weapon(id),
+FOREIGN KEY(caliber_id) REFERENCES Caliber(id)
+);
+
+CREATE TABLE [WeaponCountry] (
+[weapon_id] INTEGER  NOT NULL,
+[country_id] INTEGER  NOT NULL,
+PRIMARY KEY ([weapon_id],[country_id]),
+FOREIGN KEY(weapon_id) REFERENCES Weapon(id),
+FOREIGN KEY(country_id) REFERENCES Country(id)
+);
+
+
