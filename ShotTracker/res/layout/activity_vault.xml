@@ -6,17 +6,7 @@
     android:orientation="vertical"
     tools:context=".VaultActivity" >
 
-    <TextView
-        android:id="@+id/txtTheVault"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bottom_border"
-        android:includeFontPadding="false"
-        android:text="@string/TheVault"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="50sp" />
-
-    <AutoCompleteTextView
+    <EditText
         android:id="@+id/txtSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +14,7 @@
         android:text="@string/Search" >
 
         <requestFocus />
-    </AutoCompleteTextView>
+    </EditText>
 
     <ListView
         android:id="@+id/lvwWeapons"

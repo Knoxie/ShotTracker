@@ -11,13 +11,13 @@ import android.util.Log;
 public class DataAdpater {
 	protected static final String TAG = "DataAdpater";
 
-	private final Context mContext;
+	private final Context context;
 	private SQLiteDatabase mDB;
 	private DataBaseHelper mDbHelper;
 
 	public DataAdpater(Context context) {
-		this.mContext = context;
-		mDbHelper = new DataBaseHelper(mContext);
+		this.context = context;
+		mDbHelper = new DataBaseHelper(context);
 	}
 
 	public DataAdpater createDatabase() throws SQLException {
@@ -46,11 +46,11 @@ public class DataAdpater {
 		mDbHelper.close();
 	}
 
-	public Cursor getWeapons() {
+	public Cursor getAllWeapons() {
 		try {
 			
 			//String sql = "SELECT weapon FROM Weapon";
-			String sql = ShotTrackerDB.execute_AllWeapons(mContext);
+			String sql = ShotTrackerDB.execute_AllWeapons(context);
 			
 			Cursor mCur = mDB.rawQuery(sql, null);
 			if (mCur != null) {
@@ -63,6 +63,23 @@ public class DataAdpater {
 		}
 	}
 
+	public Cursor getSomeWeapons(String strWeapon) {
+		try {
+			
+			//String sql = "SELECT weapon FROM Weapon";
+			String sql = ShotTrackerDB.execute_SomeWeapons(context, strWeapon);
+			
+			Cursor mCur = mDB.rawQuery(sql, null);
+			if (mCur != null) {
+				mCur.moveToNext();
+			}
+			return mCur;
+		} catch (SQLException e) {
+			Log.e(TAG, "getTestData >>" + e.toString());
+			throw e;
+		}
+	}
+	
 	/*public boolean SaveEmployee(String name, String email) {
 		try {
 			ContentValues cv = new ContentValues();
