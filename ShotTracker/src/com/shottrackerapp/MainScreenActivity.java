@@ -1,13 +1,13 @@
 package com.shottrackerapp;
 
-import com.knoxhouse.shottracker.R;
-
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import android.app.Activity;
-import android.content.Intent;
+
+import com.knoxhouse.shottracker.R;
 
 public class MainScreenActivity extends Activity {
 

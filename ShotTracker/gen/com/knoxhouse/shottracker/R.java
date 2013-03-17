@@ -26,7 +26,7 @@ public final class R {
         public static final int lblYearsShooting=0x7f070013;
         public static final int listManufactured=0x7f070006;
         public static final int listReloaded=0x7f070008;
-        public static final int listView1=0x7f070017;
+        public static final int lvwWeapons=0x7f070017;
         public static final int menu_settings=0x7f070018;
         public static final int txtAge=0x7f070012;
         public static final int txtAmmunition=0x7f070004;
