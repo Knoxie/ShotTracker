@@ -12,7 +12,7 @@ public class DataAdpater {
 	protected static final String TAG = "DataAdpater";
 
 	private final Context mContext;
-	private SQLiteDatabase mDb;
+	private SQLiteDatabase mDB;
 	private DataBaseHelper mDbHelper;
 
 	public DataAdpater(Context context) {
@@ -34,7 +34,7 @@ public class DataAdpater {
 		try {
 			mDbHelper.openDataBase();
 			mDbHelper.close();
-			mDb = mDbHelper.getReadableDatabase();
+			mDB = mDbHelper.getReadableDatabase();
 		} catch (SQLException e) {
 			Log.e(TAG, "open >>" + e.toString());
 			throw e;
@@ -48,9 +48,11 @@ public class DataAdpater {
 
 	public Cursor getWeapons() {
 		try {
-			String sql = "SELECT weapon FROM Weapon";
-
-			Cursor mCur = mDb.rawQuery(sql, null);
+			
+			//String sql = "SELECT weapon FROM Weapon";
+			String sql = ShotTrackerDB.execute_AllWeapons(mContext);
+			
+			Cursor mCur = mDB.rawQuery(sql, null);
 			if (mCur != null) {
 				mCur.moveToNext();
 			}
