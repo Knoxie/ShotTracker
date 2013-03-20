@@ -34,6 +34,10 @@
             android:name="com.shottrackerapp.GunViewerActivity"
             android:label="@string/title_activity_gun_viewer" >
         </activity>
+        <activity
+            android:name="com.shottrackerapp.WeaponInfoActivity"
+            android:label="@string/title_activity_weapon_info" >
+        </activity>
     </application>
 
 </manifest>

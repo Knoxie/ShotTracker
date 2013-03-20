@@ -20,5 +20,8 @@
     <string name="Ammunition">Ammunition</string>
     <string name="Manufactured">Manufactured</string>
     <string name="Reloaded">Reloaded</string>
+    <string name="title_activity_weapon_info">WeaponInfo</string>
+    <string name="action_settings">Settings</string>
+    <string name="WeaponName">Weapon Name</string>
 
 </resources>
