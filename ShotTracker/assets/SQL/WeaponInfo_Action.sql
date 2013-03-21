@@ -1,0 +1,1 @@
+SELECT action FROM Weapon JOIN WeaponAction ON WeaponAction.weapon_id = Weapon.id JOIN Action ON Action.id = WeaponAction.action_id WHERE Weapon.id = 

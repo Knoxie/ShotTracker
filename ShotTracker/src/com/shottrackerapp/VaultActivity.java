@@ -12,6 +12,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,9 +29,11 @@ import com.shottrackerapp.db.Utility;
 
 public class VaultActivity extends Activity {
 
+	private static final String TAG = "VaultActivity";
+
 	private List<String> weapons;
 	private Map<String, Integer> weaponTable;
-	private DataAdpater mDbHelper;
+	private DataAdpater DBHelper;
 	private TextView txtSearch;
 	private ListView lv;
 
@@ -39,11 +42,11 @@ public class VaultActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_vault);
 
-		mDbHelper = new DataAdpater(this);
-		mDbHelper.createDatabase();
-		mDbHelper.open();
+		DBHelper = new DataAdpater(this);
+		DBHelper.createDatabase();
+		DBHelper.open();
 
-		Cursor curWeapons = mDbHelper.getAllWeapons();
+		Cursor curWeapons = DBHelper.getAllWeapons();
 		weapons = new ArrayList<String>();
 		weaponTable = new HashMap<String, Integer>();
 		do {
@@ -53,17 +56,19 @@ public class VaultActivity extends Activity {
 			weaponTable.put(weapon, id);
 		} while (curWeapons.moveToNext());
 
-		mDbHelper.close();
+		DBHelper.close();
 
 		// Get a handle to the list view
 		lv = (ListView) findViewById(R.id.lvwWeapons);
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
-				Toast.makeText(getApplicationContext(), lv.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT)
-						.show();
-				Intent i = new Intent(VaultActivity.this, WeaponInfoActivity.class);
-				startActivity(i);
+				int weapon_id = weaponTable.get(lv.getItemAtPosition(position).toString());
+				Log.i(TAG, "weapon_id: " + weapon_id);
+				Toast.makeText(getApplicationContext(), String.valueOf(weapon_id), Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(VaultActivity.this, WeaponInfoActivity.class);
+				intent.putExtra(ShotTrackerDB.Weapon.ID, weapon_id);
+				startActivity(intent);
 			}
 		});
 
@@ -102,8 +107,8 @@ public class VaultActivity extends Activity {
 	}
 
 	public void refreshList(String text) {
-		mDbHelper.open();
-		Cursor curWeapons = mDbHelper.getSomeWeapons(text);
+		DBHelper.open();
+		Cursor curWeapons = DBHelper.getSomeWeapons(text);
 		weapons = new ArrayList<String>();
 		do {
 			String weapon = Utility.GetColumnValue(curWeapons, ShotTrackerDB.Weapon.WEAPON);
@@ -116,6 +121,6 @@ public class VaultActivity extends Activity {
 		// Convert ArrayList to array
 		String[] arrWeapons = Arrays.copyOf(weapons.toArray(), weapons.toArray().length, String[].class);
 		lv.setAdapter(new ArrayAdapter<String>(VaultActivity.this, android.R.layout.simple_list_item_1, arrWeapons));
-		mDbHelper.close();
+		DBHelper.close();
 	}
 }

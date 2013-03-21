@@ -1,0 +1,1 @@
+SELECT caliber FROM Weapon JOIN WeaponCaliber ON WeaponCaliber.weapon_id = Weapon.id JOIN Caliber ON Caliber.id = WeaponCaliber.caliber_id WHERE Weapon.id = 

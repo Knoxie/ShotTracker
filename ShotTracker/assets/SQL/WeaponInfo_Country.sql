@@ -1,0 +1,1 @@
+SELECT country FROM Weapon JOIN WeaponCountry ON WeaponCountry.weapon_id = Weapon.id JOIN Country ON Country.id = WeaponCountry.country_id WHERE Weapon.id = 

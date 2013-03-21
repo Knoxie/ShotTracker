@@ -48,52 +48,99 @@ public class DataAdpater {
 
 	public Cursor getAllWeapons() {
 		try {
-			
-			//String sql = "SELECT weapon FROM Weapon";
+
+			// String sql = "SELECT weapon FROM Weapon";
 			String sql = ShotTrackerDB.execute_AllWeapons(context);
-			
+
 			Cursor mCur = mDB.rawQuery(sql, null);
 			if (mCur != null) {
 				mCur.moveToNext();
 			}
 			return mCur;
 		} catch (SQLException e) {
-			Log.e(TAG, "getTestData >>" + e.toString());
+			Log.e(TAG, "getAllWeapons >>" + e.toString());
 			throw e;
 		}
 	}
 
 	public Cursor getSomeWeapons(String strWeapon) {
 		try {
-			
-			//String sql = "SELECT weapon FROM Weapon";
+
+			// String sql = "SELECT weapon FROM Weapon";
 			String sql = ShotTrackerDB.execute_SomeWeapons(context, strWeapon);
-			
+
 			Cursor mCur = mDB.rawQuery(sql, null);
 			if (mCur != null) {
 				mCur.moveToNext();
 			}
 			return mCur;
 		} catch (SQLException e) {
-			Log.e(TAG, "getTestData >>" + e.toString());
+			Log.e(TAG, "getSomeWeapons >>" + e.toString());
+			throw e;
+		}
+	}
+
+	public Cursor getWeaponInfo_Caliber(int weapon_id) {
+		try {
+
+			// String sql = "SELECT weapon FROM Weapon";
+			String sql = ShotTrackerDB.execute_WeaponInfo_Caliber(context, weapon_id);
+
+			Cursor mCur = mDB.rawQuery(sql, null);
+			if (mCur != null) {
+				mCur.moveToNext();
+			}
+			return mCur;
+		} catch (SQLException e) {
+			Log.e(TAG, "getWeaponInfo_Caliber >>" + e.toString());
 			throw e;
 		}
 	}
 	
-	/*public boolean SaveEmployee(String name, String email) {
+	public Cursor getWeaponInfo_Action(int weapon_id) {
 		try {
-			ContentValues cv = new ContentValues();
-			cv.put("Name", name);
-			cv.put("Email", email);
 
-			mDb.insert("Employees", null, cv);
+			// String sql = "SELECT weapon FROM Weapon";
+			String sql = ShotTrackerDB.execute_WeaponInfo_Action(context, weapon_id);
 
-			Log.d("SaveEmployee", "informationsaved");
-			return true;
-
-		} catch (Exception e) {
-			Log.d("SaveEmployee", e.toString());
-			return false;
+			Cursor mCur = mDB.rawQuery(sql, null);
+			if (mCur != null) {
+				mCur.moveToNext();
+			}
+			return mCur;
+		} catch (SQLException e) {
+			Log.e(TAG, "getWeaponInfo_Action >>" + e.toString());
+			throw e;
 		}
-	}*/
+	}
+	
+	public Cursor getWeaponInfo_Country(int weapon_id) {
+		try {
+
+			// String sql = "SELECT weapon FROM Weapon";
+			String sql = ShotTrackerDB.execute_WeaponInfo_Country(context, weapon_id);
+
+			Cursor mCur = mDB.rawQuery(sql, null);
+			if (mCur != null) {
+				mCur.moveToNext();
+			}
+			return mCur;
+		} catch (SQLException e) {
+			Log.e(TAG, "getWeaponInfo_Country >>" + e.toString());
+			throw e;
+		}
+	}
+
+	/*
+	 * public boolean SaveEmployee(String name, String email) { try {
+	 * ContentValues cv = new ContentValues(); cv.put("Name", name);
+	 * cv.put("Email", email);
+	 * 
+	 * mDb.insert("Employees", null, cv);
+	 * 
+	 * Log.d("SaveEmployee", "informationsaved"); return true;
+	 * 
+	 * } catch (Exception e) { Log.d("SaveEmployee", e.toString()); return
+	 * false; } }
+	 */
 }
