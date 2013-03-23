@@ -3,3 +3,5 @@
 *.class
 */*.class
 ShotTracker/*.class
+ShotTrackerCSVBuilder/ShotTrackerCSVBuilder/bin/*
+ShotTrackerCSVBuilder/ShotTrackerCSVBuilder/obj/Debug/
