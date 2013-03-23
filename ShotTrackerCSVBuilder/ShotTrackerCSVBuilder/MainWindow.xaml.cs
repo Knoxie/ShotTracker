@@ -32,16 +32,29 @@ namespace WpfApplication1
             OpenFileDialog openDialog = new OpenFileDialog();
             if (openDialog.ShowDialog().Value)
             {
-                imageFile = openDialog.FileName;
+                imageFile = openDialog.SafeFileName;
             }
         }
 
         private void AppendToFile(object sender, RoutedEventArgs e)
         {
-            String line = String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12}",
-                Type.Text, Manufacturer.Text, Produced.Text, Variants.Text, Weight.Text,
-                Length.Text, BarrelLength.Text, Cartridge.Text, Action.Text, MuzzleVelocity.Text,
-                FeedSystem.Text, Sights.Text, GeneralInfoBox.Text, imageFile);
+            String line = String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14}",
+                Model.Text,
+                Type.Text,
+                Manufacturer.Text,
+                Produced.Text,
+                Variants.Text,
+                Weight.Text,
+                Length.Text,
+                BarrelLength.Text,
+                Cartridge.Text,
+                Action.Text,
+                MuzzleVelocity.Text,
+                FeedSystem.Text,
+                Sights.Text,
+                Origin.Text,
+                GeneralInfoBox.Text,
+                imageFile);
 
             using (StreamWriter writer = new StreamWriter("Weapons.csv", true))
             {
@@ -54,6 +67,7 @@ namespace WpfApplication1
 
         private void resetFields()
         {
+            Model.Text = String.Empty;
             Type.Text = String.Empty;
             Manufacturer.Text = String.Empty;
             Produced.Text = String.Empty;
@@ -66,6 +80,7 @@ namespace WpfApplication1
             MuzzleVelocity.Text = String.Empty;
             FeedSystem.Text = String.Empty;
             Sights.Text = String.Empty;
+            Origin.Text = String.Empty;
             GeneralInfoBox.Text = String.Empty;
             imageFile = String.Empty;
         }
