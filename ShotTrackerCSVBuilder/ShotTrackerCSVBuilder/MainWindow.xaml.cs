@@ -38,9 +38,10 @@ namespace WpfApplication1
 
         private void AppendToFile(object sender, RoutedEventArgs e)
         {
-            String line = String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}",
-                Manufacturer.Text, Produced.Text, Variants.Text, Weight.Text, Length.Text, BarrelLength.Text,
-                Cartridge.Text, Action.Text, MuzzleVelocity.Text, GeneralInfoBox.Text, imageFile);
+            String line = String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12}",
+                Type.Text, Manufacturer.Text, Produced.Text, Variants.Text, Weight.Text,
+                Length.Text, BarrelLength.Text, Cartridge.Text, Action.Text, MuzzleVelocity.Text,
+                FeedSystem.Text, Sights.Text, GeneralInfoBox.Text, imageFile);
 
             using (StreamWriter writer = new StreamWriter("Weapons.csv", true))
             {
@@ -53,6 +54,7 @@ namespace WpfApplication1
 
         private void resetFields()
         {
+            Type.Text = String.Empty;
             Manufacturer.Text = String.Empty;
             Produced.Text = String.Empty;
             Variants.Text = String.Empty;
@@ -62,6 +64,8 @@ namespace WpfApplication1
             Cartridge.Text = String.Empty;
             Action.Text = String.Empty;
             MuzzleVelocity.Text = String.Empty;
+            FeedSystem.Text = String.Empty;
+            Sights.Text = String.Empty;
             GeneralInfoBox.Text = String.Empty;
             imageFile = String.Empty;
         }
