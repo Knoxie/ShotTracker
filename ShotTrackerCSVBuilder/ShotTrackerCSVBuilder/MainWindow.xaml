@@ -47,8 +47,7 @@
         <TextBox x:Name="Sights" TabIndex="12" HorizontalAlignment="Left" Height="23" Margin="5,386,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4" Grid.Column="1"/>
        
         <TextBox x:Name="Origin" TabIndex="13" HorizontalAlignment="Left" Height="23" Margin="5,417,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4" Grid.Column="1"/>
-        <Button x:Name="Append" Content="Save to file" HorizontalAlignment="Left" Margin="134,430,0,0" VerticalAlignment="Top" Width="102" Click="AppendToFile" Opacity="0.8" Grid.Column="2"/>
-        <Button x:Name="Add" Content="Add to list" HorizontalAlignment="Left" Margin="23,389,0,0" VerticalAlignment="Top" Width="198" Click="add" Opacity="0.8" Grid.Column="2" Height="36"/>
+        <Button x:Name="Append" Content="Save to file" HorizontalAlignment="Left" Margin="56,405,0,0" VerticalAlignment="Top" Width="144" Click="AppendToFile" Opacity="0.8" Grid.Column="2" Height="35"/>
 
 
     </Grid>

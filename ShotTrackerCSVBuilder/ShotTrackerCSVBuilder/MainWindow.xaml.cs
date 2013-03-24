@@ -29,9 +29,9 @@ namespace WpfApplication1
             }
         }
 
-        private void add(object sender, RoutedEventArgs e)
-        {
-            String line = String.Format("{0}&&{1}&&{2}&&{3}&&{4}&&{5}&&{6}&&{7}&&{8}&&{9}&&{10}&&{11}&&{12}&&{13}&&{14}",
+        private void AppendToFile(object sender, RoutedEventArgs e)
+        {          
+String line = String.Format("{0}&&{1}&&{2}&&{3}&&{4}&&{5}&&{6}&&{7}&&{8}&&{9}&&{10}&&{11}&&{12}&&{13}&&{14}",
                Model.Text,
                Type.Text,
                Manufacturer.Text,
@@ -48,18 +48,9 @@ namespace WpfApplication1
                Origin.Text,
                GeneralInfoBox.Text,
                imageFile);
-            entries.Add(line);            
-        }
-
-
-        private void AppendToFile(object sender, RoutedEventArgs e)
-        {          
-
             using (StreamWriter writer = new StreamWriter("Weapons.csv", true))
             {
-                foreach(String line in entries)
                 writer.WriteLine(line);
-
             }
 
             resetFields();
