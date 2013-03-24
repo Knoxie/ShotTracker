@@ -25,8 +25,9 @@ import android.widget.Toast;
 
 import com.knoxhouse.shottracker.R;
 import com.shottrackerapp.db.DataAdpater;
-import com.shottrackerapp.db.ShotTrackerDB;
+import com.shottrackerapp.db.Table;
 import com.shottrackerapp.db.Utility;
+import com.shottrackerapp.obj.Weapon;
 
 public class VaultActivity extends Activity {
 
@@ -51,8 +52,8 @@ public class VaultActivity extends Activity {
 		weapons = new ArrayList<String>();
 		weaponTable = new HashMap<String, Integer>();
 		do {
-			String weapon = Utility.GetColumnValue(curWeapons, ShotTrackerDB.Weapon.WEAPON);
-			Integer id = Integer.parseInt(Utility.GetColumnValue(curWeapons, ShotTrackerDB.Weapon.ID));
+			String weapon = Utility.GetColumnValue(curWeapons, Table.Weapon.WEAPON);
+			Integer id = Integer.parseInt(Utility.GetColumnValue(curWeapons, Table.Weapon.ID));
 			weapons.add(weapon);
 			weaponTable.put(weapon, id);
 		} while (curWeapons.moveToNext());
@@ -68,7 +69,7 @@ public class VaultActivity extends Activity {
 				Log.i(TAG, "weapon_id: " + weapon_id);
 				Toast.makeText(getApplicationContext(), String.valueOf(weapon_id), Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent(VaultActivity.this, WeaponInfoActivity.class);
-				intent.putExtra(ShotTrackerDB.Weapon.ID, weapon_id);
+				intent.putExtra(Table.Weapon.ID, weapon_id);
 				startActivity(intent);
 			}
 		});
@@ -124,7 +125,7 @@ public class VaultActivity extends Activity {
 		Cursor curWeapons = DBHelper.getSomeWeapons(text);
 		weapons = new ArrayList<String>();
 		do {
-			String weapon = Utility.GetColumnValue(curWeapons, ShotTrackerDB.Weapon.WEAPON);
+			String weapon = Utility.GetColumnValue(curWeapons, Table.Weapon.WEAPON);
 			weapons.add(weapon);
 		} while (curWeapons.moveToNext());
 

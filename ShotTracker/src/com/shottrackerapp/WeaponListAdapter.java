@@ -3,6 +3,8 @@ package com.shottrackerapp;
 import java.util.List;
 import java.util.Map;
 
+import com.shottrackerapp.obj.Weapon;
+
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;

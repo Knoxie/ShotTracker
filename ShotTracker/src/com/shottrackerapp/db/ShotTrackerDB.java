@@ -10,17 +10,11 @@ import android.util.Log;
 public class ShotTrackerDB {
 
 	private static final String TAG = "ShotTrackerDB";
-	private static final String ALL_WEAPONS = "SQL/AllWeapons.sql";
-	private static final String WEAPON_INFO = "SQL/WeaponInfo.sql";
-	private static final String SOME_WEAPONS = "SQL/SomeWeapons.sql";
-	private static final String WEAPON_INFO_CALIBER = "SQL/WeaponInfo_Caliber.sql";
-	private static final String WEAPON_INFO_ACTION = "SQL/WeaponInfo_Action.sql";
-	private static final String WEAPON_INFO_COUNTRY = "SQL/WeaponInfo_Country.sql";
 
 	public static String execute_AllWeapons(Context context) {
 		Log.d(TAG, "execute_AllWeapons()");
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open(ALL_WEAPONS)));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open(SQL.ALL_WEAPONS)));
 			String strOutput = reader.readLine();
 			Log.i(TAG, "strOutput: " + strOutput);
 			return strOutput;
@@ -33,7 +27,7 @@ public class ShotTrackerDB {
 	public static String execute_WeaponInfo(Context context) {
 		Log.d(TAG, "execute_WeaponInfo()");
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open(WEAPON_INFO)));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open(SQL.WEAPON_INFO)));
 			String strOutput = reader.readLine();
 			Log.i(TAG, "strOutput: " + strOutput);
 			return strOutput;
@@ -47,7 +41,7 @@ public class ShotTrackerDB {
 		Log.d(TAG, "execute_WeaponInfo()");
 		String strOutput = "";
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open(SOME_WEAPONS)));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open(SQL.SOME_WEAPONS)));
 			String line;
 			while ((line = reader.readLine()) != null) {
 				if (line.equals(""))
@@ -68,7 +62,7 @@ public class ShotTrackerDB {
 		String strOutput = "";
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open(
-					WEAPON_INFO_CALIBER)));
+					SQL.WEAPON_INFO_CALIBER)));
 			String line;
 			while ((line = reader.readLine()) != null)
 				strOutput += line;
@@ -86,7 +80,7 @@ public class ShotTrackerDB {
 		String strOutput = "";
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open(
-					WEAPON_INFO_ACTION)));
+					SQL.WEAPON_INFO_ACTION)));
 			String line;
 			while ((line = reader.readLine()) != null)
 				strOutput += line;
@@ -104,7 +98,7 @@ public class ShotTrackerDB {
 		String strOutput = "";
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open(
-					WEAPON_INFO_COUNTRY)));
+					SQL.WEAPON_INFO_COUNTRY)));
 			String line;
 			while ((line = reader.readLine()) != null)
 				strOutput += line;
@@ -115,23 +109,6 @@ public class ShotTrackerDB {
 			e.printStackTrace();
 			return "";
 		}
-	}
-	
-	public class Weapon {
-		public static final String ID = "id";
-		public static final String WEAPON = "weapon";
-	}
-
-	public class Caliber {
-		public static final String CALIBER = "caliber";
-	}
-
-	public class Action {
-		public static final String ACTION = "action";
-	}
-
-	public class Country {
-		public static final String COUNTRY = "country";
 	}
 
 }

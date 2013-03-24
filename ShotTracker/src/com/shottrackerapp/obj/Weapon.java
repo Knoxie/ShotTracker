@@ -1,4 +1,4 @@
-package com.shottrackerapp;
+package com.shottrackerapp.obj;
 
 import java.util.HashMap;
 

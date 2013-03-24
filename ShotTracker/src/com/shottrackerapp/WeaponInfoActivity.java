@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import com.knoxhouse.shottracker.R;
 import com.shottrackerapp.db.DataAdpater;
-import com.shottrackerapp.db.ShotTrackerDB;
+import com.shottrackerapp.db.Table;
 import com.shottrackerapp.db.Utility;
 
 public class WeaponInfoActivity extends Activity {
@@ -35,7 +35,7 @@ public class WeaponInfoActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_weapon_info);
 
-		weapon_id = getIntent().getExtras().getInt(ShotTrackerDB.Weapon.ID);
+		weapon_id = getIntent().getExtras().getInt(Table.Weapon.ID);
 		loadCaliberInfo();
 		loadActionInfo();
 		loadCaliberCountry();
@@ -80,7 +80,7 @@ public class WeaponInfoActivity extends Activity {
 		Cursor curWeapons = DBHelper.getWeaponInfo_Caliber(weapon_id);
 		calibers = new ArrayList<String>();
 		do {
-			String caliber = Utility.GetColumnValue(curWeapons, ShotTrackerDB.Caliber.CALIBER);
+			String caliber = Utility.GetColumnValue(curWeapons, Table.Caliber.CALIBER);
 			calibers.add(caliber);
 		} while (curWeapons.moveToNext());
 
@@ -95,7 +95,7 @@ public class WeaponInfoActivity extends Activity {
 		Cursor curWeapons = DBHelper.getWeaponInfo_Action(weapon_id);
 		actions = new ArrayList<String>();
 		do {
-			String action = Utility.GetColumnValue(curWeapons, ShotTrackerDB.Action.ACTION);
+			String action = Utility.GetColumnValue(curWeapons, Table.Action.ACTION);
 			actions.add(action);
 		} while (curWeapons.moveToNext());
 
@@ -110,7 +110,7 @@ public class WeaponInfoActivity extends Activity {
 		Cursor curWeapons = DBHelper.getWeaponInfo_Country(weapon_id);
 		countries = new ArrayList<String>();
 		do {
-			String country = Utility.GetColumnValue(curWeapons, ShotTrackerDB.Country.COUNTRY);
+			String country = Utility.GetColumnValue(curWeapons, Table.Country.COUNTRY);
 			countries.add(country);
 		} while (curWeapons.moveToNext());
 

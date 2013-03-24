@@ -1,0 +1,14 @@
+SELECT Type FROM Weapon JOIN WeaponType ON WeaponType.weapon_id = Weapon.id JOIN Type ON Type.id = WeaponType.Type_id WHERE Weapon.id = 
+SELECT Manufacturer FROM Weapon JOIN WeaponManufacturer ON WeaponManufacturer.weapon_id = Weapon.id JOIN Manufacturer ON Manufacturer.id = WeaponManufacturer.Manufacturer_id WHERE Weapon.id = 
+SELECT Produced FROM Weapon JOIN WeaponProduced ON WeaponProduced.weapon_id = Weapon.id JOIN Produced ON Produced.id = WeaponProduced.Produced_id WHERE Weapon.id = 
+SELECT Variant FROM Weapon JOIN WeaponVariant ON WeaponVariant.weapon_id = Weapon.id JOIN Variant ON Variant.id = WeaponVariant.Variant_id WHERE Weapon.id =
+SELECT Weight FROM Weapon JOIN WeaponWeight ON WeaponWeight.weapon_id = Weapon.id JOIN Weight ON Weight.id = WeaponWeight.Weight_id WHERE Weapon.id = 
+SELECT Length FROM Weapon JOIN WeaponLength ON WeaponLength.weapon_id = Weapon.id JOIN Length ON Length.id = WeaponLength.Length_id WHERE Weapon.id =
+SELECT BarrelLength FROM Weapon JOIN WeaponBarrelLength ON WeaponBarrelLength.weapon_id = Weapon.id JOIN BarrelLength ON BarrelLength.id = WeaponBarrelLength.BarrelLength_id WHERE Weapon.id = 
+SELECT caliber FROM Weapon JOIN WeaponCaliber ON WeaponCaliber.weapon_id = Weapon.id JOIN Caliber ON Caliber.id = WeaponCaliber.caliber_id WHERE Weapon.id = 
+SELECT action FROM Weapon JOIN WeaponAction ON WeaponAction.weapon_id = Weapon.id JOIN Action ON Action.id = WeaponAction.action_id WHERE Weapon.id =
+SELECT MuzzleVelocity FROM Weapon JOIN WeaponMuzzleVelocity ON WeaponMuzzleVelocity.weapon_id = Weapon.id JOIN MuzzleVelocity ON MuzzleVelocity.id = WeaponMuzzleVelocity.MuzzleVelocity_id WHERE Weapon.id = 
+SELECT FeedSystem FROM Weapon JOIN WeaponFeedSystem ON WeaponFeedSystem.weapon_id = Weapon.id JOIN FeedSystem ON FeedSystem.id = WeaponFeedSystem.FeedSystem_id WHERE Weapon.id = 
+SELECT Sights FROM Weapon JOIN WeaponSights ON WeaponSights.weapon_id = Weapon.id JOIN Sights ON Sights.id = WeaponSights.Sights_id WHERE Weapon.id = 
+SELECT country FROM Weapon JOIN WeaponCountry ON WeaponCountry.weapon_id = Weapon.id JOIN Country ON Country.id = WeaponCountry.country_id WHERE Weapon.id = 
+SELECT * FROM Weapon WHERE id = 
