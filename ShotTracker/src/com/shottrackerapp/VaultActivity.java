@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -73,8 +74,13 @@ public class VaultActivity extends Activity {
 		});
 
 		// Convert ArrayList to array
-		String[] arrWeapons = Arrays.copyOf(weapons.toArray(), weapons.toArray().length, String[].class);
-		lv.setAdapter(new ArrayAdapter<String>(VaultActivity.this, android.R.layout.simple_list_item_1, arrWeapons));
+		// String[] arrWeapons = Arrays.copyOf(weapons.toArray(),
+		// weapons.toArray().length, String[].class);
+		List<Weapon> weaponAndType = getData();
+		ListAdapter adapter = new WeaponListAdapter(this, weaponAndType, android.R.layout.simple_list_item_2,
+				new String[] { Weapon.KEY_WEAPON, Weapon.KEY_TYPE },
+				new int[] { android.R.id.text1, android.R.id.text2 });
+		lv.setAdapter(adapter);
 
 		txtSearch = ((TextView) findViewById(R.id.txtSearch));
 
@@ -104,6 +110,13 @@ public class VaultActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_vault, menu);
 		return true;
+	}
+
+	private List<Weapon> getData() {
+		List<Weapon> wepaonAndType = new ArrayList<Weapon>();
+		for (String strWeapon : weapons)
+			wepaonAndType.add(new Weapon(strWeapon, "Rifle"));
+		return wepaonAndType;
 	}
 
 	public void refreshList(String text) {
