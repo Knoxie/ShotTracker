@@ -61,11 +61,11 @@ public final class R {
         public static final int txtAmmunition=0x7f090004;
         public static final int txtCaliberValue=0x7f090003;
         public static final int txtFirstName=0x7f09000c;
-        public static final int txtGunVault=0x7f090009;
+        public static final int txtGunVault=0x7f09000a;
         public static final int txtLastName=0x7f09000d;
-        public static final int txtRangeDay=0x7f09000b;
+        public static final int txtRangeDay=0x7f090009;
         public static final int txtSearch=0x7f090012;
-        public static final int txtShooterProfile=0x7f09000a;
+        public static final int txtShooterProfile=0x7f09000b;
         public static final int txtWeaponInfo=0x7f090014;
         public static final int txtYearsShooting=0x7f090011;
     }

@@ -4,86 +4,92 @@ import java.util.TreeSet;
 
 public class INSERT {
 
-	public static TreeSet<String> create(Weapon weapon) {
+	private static final String Type = "Type";
+	private static final String Manufacturer = "Manufacturer";
+	private static final String Produced = "Produced";
+	private static final String Variant = "Variant";
+
+	private static final String Weight = "Weight";
+	private static final String Length = "Length";
+	private static final String BarrelLength = "BarrelLength";
+
+	private static final String Caliber = "Caliber";
+	private static final String Action = "Action";
+	private static final String MuzzleVelocity = "MuzzleVelocity";
+
+	private static final String FeedSystem = "FeedSystem";
+	private static final String Sights = "Sights";
+	private static final String Country = "Country";
+
+	public static TreeSet<String> create_tables(Weapon weapon) {
 		TreeSet<String> output = new TreeSet<String>();
 
-		output.add(insert_Weapon(weapon.getWeapon()));
-		output.addAll(insert_Country(weapon.getCountries()));
-		output.addAll(insert_Action(weapon.getActions()));
-		output.addAll(insert_Caliber(weapon.getCalibers()));
-		output.addAll(insert_WeaponAction(weapon.getWeapon(),
-				weapon.getActions()));
-		output.addAll(insert_WeaponCaliber(weapon.getWeapon(),
-				weapon.getCalibers()));
-		output.addAll(insert_WeaponCountry(weapon.getWeapon(),
-				weapon.getCountries()));
+		output.add(insert_Weapon(weapon.getWeapon(), weapon.getInfo(), weapon.getImage()));
+		output.addAll(insert_WeaponProperty(Type, weapon.getType()));
+		output.addAll(insert_WeaponProperty(Manufacturer, weapon.getManufacturer()));
+		output.addAll(insert_WeaponProperty(Produced, weapon.getProduced()));
+		output.addAll(insert_WeaponProperty(Variant, weapon.getVariant()));
+
+		output.addAll(insert_WeaponProperty(Weight, weapon.getWeight()));
+		output.addAll(insert_WeaponProperty(Length, weapon.getLength()));
+		output.addAll(insert_WeaponProperty(BarrelLength, weapon.getBarrelLength()));
+
+		output.addAll(insert_WeaponProperty(Caliber, weapon.getCaliber()));
+		output.addAll(insert_WeaponProperty(Action, weapon.getAction()));
+		output.addAll(insert_WeaponProperty(MuzzleVelocity, weapon.getMuzzleVelocity()));
+
+		output.addAll(insert_WeaponProperty(FeedSystem, weapon.getFeedSystem()));
+		output.addAll(insert_WeaponProperty(Sights, weapon.getSights()));
+		output.addAll(insert_WeaponProperty(Country, weapon.getCountry()));
 
 		return output;
 	}
 
-	private static TreeSet<String> insert_WeaponAction(String strWeapon,
-			String[] actions) {
+	public static TreeSet<String> create_allkeytables(Weapon weapon) {
 		TreeSet<String> output = new TreeSet<String>();
-		for (String strAction : actions)
-			output.add("INSERT INTO WeaponAction (weapon_id, action_id) VALUES (("
-					+ "SELECT id FROM Weapon WHERE weapon = '"
-					+ strWeapon.replace("'", "''")
-					+ "'), "
-					+ "(SELECT id FROM Action WHERE action = '"
-					+ strAction.replace("'", "''") + "')" + ");");
+
+		output.addAll(insert_WeaponProperty_AllKey(Type, weapon.getWeapon(), weapon.getType()));
+		output.addAll(insert_WeaponProperty_AllKey(Manufacturer, weapon.getWeapon(), weapon.getManufacturer()));
+		output.addAll(insert_WeaponProperty_AllKey(Produced, weapon.getWeapon(), weapon.getProduced()));
+		output.addAll(insert_WeaponProperty_AllKey(Variant, weapon.getWeapon(), weapon.getVariant()));
+
+		output.addAll(insert_WeaponProperty_AllKey(Weight, weapon.getWeapon(), weapon.getWeight()));
+		output.addAll(insert_WeaponProperty_AllKey(Length, weapon.getWeapon(), weapon.getLength()));
+		output.addAll(insert_WeaponProperty_AllKey(BarrelLength, weapon.getWeapon(), weapon.getBarrelLength()));
+
+		output.addAll(insert_WeaponProperty_AllKey(Caliber, weapon.getWeapon(), weapon.getCaliber()));
+		output.addAll(insert_WeaponProperty_AllKey(Action, weapon.getWeapon(), weapon.getAction()));
+		output.addAll(insert_WeaponProperty_AllKey(MuzzleVelocity, weapon.getWeapon(), weapon.getMuzzleVelocity()));
+
+		output.addAll(insert_WeaponProperty_AllKey(FeedSystem, weapon.getWeapon(), weapon.getFeedSystem()));
+		output.addAll(insert_WeaponProperty_AllKey(Sights, weapon.getWeapon(), weapon.getSights()));
+		output.addAll(insert_WeaponProperty_AllKey(Country, weapon.getWeapon(), weapon.getCountry()));
+		
 		return output;
 	}
 
-	private static TreeSet<String> insert_WeaponCaliber(String strWeapon,
-			String[] calibers) {
+	private static TreeSet<String> insert_WeaponProperty_AllKey(String strTableName, String strWeapon,
+			String[] properties) {
 		TreeSet<String> output = new TreeSet<String>();
-		for (String strCalibers : calibers)
-			output.add("INSERT INTO WeaponCaliber (weapon_id, caliber_id) VALUES (("
-					+ "SELECT id FROM Weapon WHERE weapon = '"
-					+ strWeapon.replace("'", "''")
-					+ "'), "
-					+ "(SELECT id FROM Caliber WHERE caliber = '"
-					+ strCalibers.replace("'", "''") + "')" + ");");
+		for (String property : properties)
+			output.add("INSERT INTO Weapon" + strTableName + " (weapon_id, " + strTableName.toLowerCase()
+					+ "_id) VALUES ((" + "SELECT id FROM Weapon WHERE weapon = '" + strWeapon.replace("'", "''")
+					+ "'), " + "(SELECT id FROM " + strTableName + " WHERE " + strTableName + " = '"
+					+ property.replace("'", "''") + "')" + ");");
 		return output;
 	}
 
-	private static TreeSet<String> insert_WeaponCountry(String strWeapon,
-			String[] countries) {
+	private static String insert_Weapon(String strWeapon, String info, String image) {
+		return "INSERT INTO Weapon (weapon,info,image) VALUES ('" + strWeapon.replace("'", "''") + "', '"
+				+ info.replace("'", "''") + "', '" + image.replace("'", "''") + "');";
+	}
+
+	private static TreeSet<String> insert_WeaponProperty(String strTableName, String[] properties) {
 		TreeSet<String> output = new TreeSet<String>();
-		for (String strCountry : countries)
-			output.add("INSERT INTO WeaponCountry (weapon_id, country_id) VALUES (("
-					+ "SELECT id FROM Weapon WHERE weapon = '"
-					+ strWeapon.replace("'", "''")
-					+ "'), "
-					+ "(SELECT id FROM Country WHERE country = '"
-					+ strCountry.replace("'", "''") + "')" + ");");
+		for (String property : properties)
+			output.add("INSERT INTO " + strTableName + " (" + strTableName.toLowerCase() + ") VALUES ('"
+					+ property.replace("'", "''") + "');");
 		return output;
 	}
 
-	private static String insert_Weapon(String strWeapon) {
-		return "INSERT INTO Weapon (weapon) VALUES ('" + strWeapon.replace("'", "''") + "');";
-	}
-
-	private static TreeSet<String> insert_Country(String[] countries) {
-		TreeSet<String> output = new TreeSet<String>();
-		for (String strCountry : countries)
-			output.add("INSERT INTO Country (country) VALUES ('" + strCountry.replace("'", "''")
-					+ "');");
-		return output;
-	}
-
-	private static TreeSet<String> insert_Action(String[] actions) {
-		TreeSet<String> output = new TreeSet<String>();
-		for (String strAction : actions)
-			output.add("INSERT INTO Action (action) VALUES ('" + strAction.replace("'", "''") + "');");
-		return output;
-	}
-
-	private static TreeSet<String> insert_Caliber(String[] calibers) {
-		TreeSet<String> output = new TreeSet<String>();
-		for (String strCaliber : calibers)
-			output.add("INSERT INTO Caliber (caliber) VALUES ('" + strCaliber.replace("'", "''")
-					+ "');");
-		return output;
-	}
 }

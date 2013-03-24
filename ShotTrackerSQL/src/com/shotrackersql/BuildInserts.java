@@ -14,9 +14,10 @@ public class BuildInserts {
 	public static void main(String[] args) {
 
 		try {
-			TreeSet<String> inserts = new TreeSet<String>();
+			TreeSet<String> insertsTables = new TreeSet<String>();
+			TreeSet<String> insertsAllKeyTables = new TreeSet<String>();
 			File folder = new File(
-					"C:\\Users\\jhouse\\workspace\\ShotTracker\\Documents\\csv");
+					"C:\\Users\\Jason\\workspace\\ShotTracker\\Documents\\csv");
 
 			for (final File fileEntry : folder.listFiles()) {
 				if (fileEntry.isDirectory()) {
@@ -27,17 +28,20 @@ public class BuildInserts {
 
 					String line;
 					while ((line = br.readLine()) != null) {
-						inserts.addAll(INSERT.create(new Weapon(line)));
+						insertsTables.addAll(INSERT.create_tables(new Weapon(line)));
+						insertsAllKeyTables.addAll(INSERT.create_allkeytables(new Weapon(line)));
 					}
 					br.close();
 				}
 			}
 
 			FileWriter fw = new FileWriter(new File(
-					"C:\\Users\\jhouse\\Desktop\\output.sql"));
+					"C:\\Users\\Jason\\workspace\\ShotTracker\\SQL\\Weapons.sql"));
 			BufferedWriter bw = new BufferedWriter(fw);
 
-			for (String strInsert : inserts)
+			for (String strInsert : insertsTables)
+				bw.append(strInsert + "\n");
+			for (String strInsert : insertsAllKeyTables)
 				bw.append(strInsert + "\n");
 			bw.close();
 

@@ -6,11 +6,33 @@
     tools:context=".MainScreenActivity" >
 
     <TextView
-        android:id="@+id/txtGunVault"
+        android:id="@+id/txtRangeDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_margin="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/border_gray"
+        android:gravity="right"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/RangeDay"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/txtGunVault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtRangeDay"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@drawable/border_gray"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -23,27 +45,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/txtRangeDay"
-        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@drawable/border_gray"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="@string/ShooterProfile"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="40sp" />
-
-    <TextView
-        android:id="@+id/txtRangeDay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="10dp"
-        android:layout_toRightOf="@+id/txtGunVault"
-        android:background="@drawable/border_gray"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="@string/RangeDay"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="40sp" />
 
