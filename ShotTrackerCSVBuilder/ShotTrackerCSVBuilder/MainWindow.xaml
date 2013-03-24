@@ -3,41 +3,53 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Shot Tracker CSV Creator" Height="490" MaxHeight="490" MaxWidth="700" Width="700">
     <Grid HorizontalAlignment="Left" Height="460" VerticalAlignment="Top" Width="697" Margin="0,3,-5,-85">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="102*">
+            </ColumnDefinition>
+            <ColumnDefinition Width="343*"/>
+            <ColumnDefinition Width="244*"/>
+            <ColumnDefinition Width="8*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="background" HorizontalAlignment="Left" Height="311" Margin="7,35,-28,0" VerticalAlignment="Top" Width="718" Source="background.png" Opacity="0.1" Grid.ColumnSpan="4"/>
 
-        <Image x:Name="background" HorizontalAlignment="Left" Height="311" Margin="7,35,-28,0" VerticalAlignment="Top" Width="718" Source="background.png" Opacity="0.1"/>
+        <Label Content="Type:" HorizontalAlignment="Right" Margin="0,37,341,0" VerticalAlignment="Top" Width="97" Opacity="0.95" Grid.ColumnSpan="2"/>
+        <Label Content="Model:" HorizontalAlignment="Right" VerticalAlignment="Top" Width="97" Opacity="0.95" Margin="0,9,0,0"/>
+        <Label Content="Manufacturer:" HorizontalAlignment="Right" Margin="0,72,341,0" VerticalAlignment="Top" Width="97" Opacity="0.95" Grid.ColumnSpan="2"/>
+        <Label Content="Produced:" HorizontalAlignment="Right" Margin="0,103,341,0" VerticalAlignment="Top" Width="97" Opacity="0.95" Grid.ColumnSpan="2"/>
+        <Label Content="Variants:" HorizontalAlignment="Right" Margin="0,134,341,0" VerticalAlignment="Top" Width="97" Opacity="0.95" Grid.ColumnSpan="2"/>
+        <Label Content="Weight" HorizontalAlignment="Right" Margin="0,165,341,0" VerticalAlignment="Top" Width="97" Opacity="0.95" Grid.ColumnSpan="2"/>
+        <Label Content="Length:" HorizontalAlignment="Right" Margin="0,196,341,0" VerticalAlignment="Top" Width="97" Opacity="0.95" Grid.ColumnSpan="2"/>
+        <Label Content="Barrel Length:" HorizontalAlignment="Right" Margin="0,227,341,0" VerticalAlignment="Top" Width="97" Opacity="0.95" Grid.ColumnSpan="2"/>
+        <Label Content="Cartridge:" HorizontalAlignment="Right" Margin="0,258,341,0" VerticalAlignment="Top" Width="97" Opacity="0.95" Grid.ColumnSpan="2"/>
+        <Label Content="Action:" HorizontalAlignment="Right" Margin="0,289,341,0" VerticalAlignment="Top" Width="97" Opacity="0.95" Grid.ColumnSpan="2"/>
+        <Label Content="Muzzle Velocity:" HorizontalAlignment="Right" Margin="0,320,341,0" VerticalAlignment="Top" Width="97" Opacity="0.95" Grid.ColumnSpan="2"/>
+        <Label Content="Other Info:" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Width="66" Opacity="0.95" Grid.Column="2"/>
+        <Label Content="Feed System" HorizontalAlignment="Right" Margin="0,352,341,0" VerticalAlignment="Top" Width="97" Opacity="0.95" Grid.ColumnSpan="2"/>
+        <Label Content="Sights:" HorizontalAlignment="Right" Margin="0,383,341,0" VerticalAlignment="Top" Width="97" Opacity="0.95" Grid.ColumnSpan="2"/>
+        <Label Content="Origin:" HorizontalAlignment="Right" Margin="0,414,341,0" VerticalAlignment="Top" Width="97" Opacity="0.95" RenderTransformOrigin="0.495,2.192" Grid.ColumnSpan="2"/>
+        
+        <TextBox x:Name="Model" TabIndex="0" HorizontalAlignment="Left" Height="23" Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4" Grid.Column="1"/>
+        <TextBox x:Name="Manufacturer" TabIndex="2" HorizontalAlignment="Left" Height="23" Margin="5,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4" Grid.Column="1"/>
+        <TextBox x:Name="Produced"  TabIndex="3"  HorizontalAlignment="Left" Height="23" Margin="5,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4" Grid.Column="1"/>
+        <TextBox x:Name="Variants"  TabIndex="4" HorizontalAlignment="Left" Height="23" Margin="5,137,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4" Grid.Column="1"/>
+        <TextBox x:Name="Weight"  TabIndex="5"  HorizontalAlignment="Left" Height="23" Margin="5,168,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4" Grid.Column="1"/>
+        <TextBox x:Name="Length"  TabIndex="6"  HorizontalAlignment="Left" Height="23" Margin="5,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4" Grid.Column="1"/>
+        <TextBox x:Name="BarrelLength"  TabIndex="7" HorizontalAlignment="Left" Height="23" Margin="5,230,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4" Grid.Column="1"/>
+        <TextBox x:Name="Cartridge"  TabIndex="8" HorizontalAlignment="Left" Height="23" Margin="5,261,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4" Grid.Column="1"/>
+        <TextBox x:Name="Action" TabIndex="9" HorizontalAlignment="Left" Height="23" Margin="5,292,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4" Grid.Column="1"/>
+        <TextBox x:Name="MuzzleVelocity" TabIndex="10" HorizontalAlignment="Left" Height="23" Margin="5,323,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4" Grid.Column="1"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="306" Margin="10,40,0,0" VerticalAlignment="Top" Width="227" Opacity="0.8" Grid.Column="2"/>
+        <TextBox x:Name="GeneralInfoBox" TabIndex="14" TextWrapping="Wrap" Text="" Margin="10,41,8,113" IsEnabled="True" Opacity="0.35" Grid.Column="2"/>
+        <Button x:Name="SelectImage" TabIndex="15" Content="Select an Image " HorizontalAlignment="Left" Margin="23,358,0,0" VerticalAlignment="Top" Width="198" Click="FileButton_Click" Opacity="0.8" Grid.Column="2"/>
+        <TextBox x:Name="Type" TabIndex="1" HorizontalAlignment="Left" Height="23" Margin="5,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4" Grid.Column="1"/>
+        <TextBox x:Name="FeedSystem" TabIndex="11" HorizontalAlignment="Left" Height="23" Margin="5,355,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4" Grid.Column="1"/>
+   
+        <TextBox x:Name="Sights" TabIndex="12" HorizontalAlignment="Left" Height="23" Margin="5,386,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4" Grid.Column="1"/>
+       
+        <TextBox x:Name="Origin" TabIndex="13" HorizontalAlignment="Left" Height="23" Margin="5,417,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4" Grid.Column="1"/>
+        <Button x:Name="Append" Content="Save to file" HorizontalAlignment="Left" Margin="134,430,0,0" VerticalAlignment="Top" Width="102" Click="AppendToFile" Opacity="0.8" Grid.Column="2"/>
+        <Button x:Name="Add" Content="Add to list" HorizontalAlignment="Left" Margin="23,389,0,0" VerticalAlignment="Top" Width="198" Click="add" Opacity="0.8" Grid.Column="2" Height="36"/>
 
-        <TextBox x:Name="Manufacturer" HorizontalAlignment="Left" Height="23" Margin="107,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4"/>
-        <Label Content="Manufacturer:" HorizontalAlignment="Right" Margin="0,72,593,0" VerticalAlignment="Top" Width="97" Opacity="0.95"/>
-        <TextBox x:Name="Produced" HorizontalAlignment="Left" Height="23" Margin="107,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4"/>
-        <Label Content="Produced:" HorizontalAlignment="Right" Margin="0,103,593,0" VerticalAlignment="Top" Width="97" Opacity="0.95"/>
-        <TextBox x:Name="Variants" HorizontalAlignment="Left" Height="23" Margin="107,137,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4"/>
-        <Label Content="Variants:" HorizontalAlignment="Right" Margin="0,134,593,0" VerticalAlignment="Top" Width="97" Opacity="0.95"/>
-        <TextBox x:Name="Weight" HorizontalAlignment="Left" Height="23" Margin="107,168,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4"/>
-        <Label Content="Weight" HorizontalAlignment="Right" Margin="0,165,593,0" VerticalAlignment="Top" Width="97" Opacity="0.95"/>
-        <TextBox x:Name="Length" HorizontalAlignment="Left" Height="23" Margin="107,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4"/>
-        <Label Content="Length:" HorizontalAlignment="Right" Margin="0,196,593,0" VerticalAlignment="Top" Width="97" Opacity="0.95"/>
-        <TextBox x:Name="BarrelLength" HorizontalAlignment="Left" Height="23" Margin="107,230,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4"/>
-        <Label Content="Barrel Length:" HorizontalAlignment="Right" Margin="0,227,593,0" VerticalAlignment="Top" Width="97" Opacity="0.95"/>
-        <TextBox x:Name="Cartridge" HorizontalAlignment="Left" Height="23" Margin="107,261,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4"/>
-        <Label Content="Cartridge:" HorizontalAlignment="Right" Margin="0,258,593,0" VerticalAlignment="Top" Width="97" Opacity="0.95"/>
-        <TextBox x:Name="Action" HorizontalAlignment="Left" Height="23" Margin="107,292,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4"/>
-        <Label Content="Action:" HorizontalAlignment="Right" Margin="0,289,593,0" VerticalAlignment="Top" Width="97" Opacity="0.95"/>
-        <TextBox x:Name="MuzzleVelocity" HorizontalAlignment="Left" Height="23" Margin="107,323,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4"/>
-        <Label Content="Muzzle Velocity:" HorizontalAlignment="Right" Margin="0,320,593,0" VerticalAlignment="Top" Width="97" Opacity="0.95"/>
-        <Label Content="Other Info:" HorizontalAlignment="Left" Margin="455,9,0,0" VerticalAlignment="Top" Width="66" Opacity="0.95"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="306" Margin="455,40,0,0" VerticalAlignment="Top" Width="227" Opacity="0.8"/>
-        <TextBox x:Name="GeneralInfoBox" TextWrapping="Wrap" Text="" Margin="455,41,16,113" IsEnabled="True" Opacity="0.35"/>
-        <Button x:Name="SelectImage" Content="Select an Image " HorizontalAlignment="Left" Margin="467,383,0,0" VerticalAlignment="Top" Width="198" Click="FileButton_Click" Opacity="0.8"/>
-        <Button x:Name="Append" Content="Append To File" HorizontalAlignment="Left" Margin="579,420,0,0" VerticalAlignment="Top" Width="102" Click="AppendToFile" Opacity="0.8"/>
-        <TextBox x:Name="Type" HorizontalAlignment="Left" Height="23" Margin="107,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4"/>
-        <Label Content="Type:" HorizontalAlignment="Right" Margin="0,37,593,0" VerticalAlignment="Top" Width="97" Opacity="0.95"/>
-        <TextBox x:Name="FeedSystem" HorizontalAlignment="Left" Height="23" Margin="107,355,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4"/>
-        <Label Content="Feed System" HorizontalAlignment="Right" Margin="0,352,593,0" VerticalAlignment="Top" Width="97" Opacity="0.95"/>
-        <TextBox x:Name="Sights" HorizontalAlignment="Left" Height="23" Margin="107,386,0,-13" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4"/>
-        <Label Content="Sights:" HorizontalAlignment="Right" Margin="0,383,593,-13" VerticalAlignment="Top" Width="97" Opacity="0.95"/>
-        <TextBox x:Name="Origin" HorizontalAlignment="Left" Height="23" Margin="107,417,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4"/>
-        <Label Content="Origin:" HorizontalAlignment="Right" Margin="0,414,593,0" VerticalAlignment="Top" Width="97" Opacity="0.95" RenderTransformOrigin="0.495,2.192"/>
-        <TextBox x:Name="Model" HorizontalAlignment="Left" Height="23" Margin="107,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Opacity="0.4"/>
-        <Label Content="Model:" HorizontalAlignment="Right" Margin="0,9,593,0" VerticalAlignment="Top" Width="97" Opacity="0.95"/>
+
     </Grid>
 </Window>
