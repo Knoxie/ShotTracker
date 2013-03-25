@@ -36,9 +36,9 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int border_gray=0x7f020000;
-        public static final int border_red=0x7f020001;
-        public static final int border_white=0x7f020002;
+        public static final int border_blue=0x7f020000;
+        public static final int border_lightblue=0x7f020001;
+        public static final int border_red=0x7f020002;
         public static final int bottom_border=0x7f020003;
         public static final int ic_launcher=0x7f020004;
         public static final int range_day=0x7f020005;
@@ -47,8 +47,8 @@ public final class R {
         public static final int target=0x7f020008;
     }
     public static final class id {
-        public static final int action_settings=0x7f090017;
-        public static final int elvWeaponInfo=0x7f090015;
+        public static final int action_settings=0x7f090025;
+        public static final int elvWeaponInfo=0x7f090016;
         public static final int imageView1=0x7f090000;
         public static final int lblAge=0x7f09000e;
         public static final int lblCaliber=0x7f090002;
@@ -58,18 +58,32 @@ public final class R {
         public static final int lblYearsShooting=0x7f090010;
         public static final int listManufactured=0x7f090006;
         public static final int listReloaded=0x7f090008;
-        public static final int lvwWeapons=0x7f090013;
-        public static final int menu_settings=0x7f090016;
+        public static final int lvwWeapons=0x7f090012;
+        public static final int menu_settings=0x7f090024;
+        public static final int textView1=0x7f090014;
+        public static final int txtAction=0x7f090022;
         public static final int txtAge=0x7f09000f;
         public static final int txtAmmunition=0x7f090004;
+        public static final int txtBarrelLength=0x7f09001c;
+        public static final int txtCaliber=0x7f090021;
         public static final int txtCaliberValue=0x7f090003;
+        public static final int txtCountry=0x7f09001d;
+        public static final int txtFeedSystem=0x7f09001e;
         public static final int txtFirstName=0x7f09000c;
         public static final int txtGunVault=0x7f09000a;
+        public static final int txtInfo=0x7f090017;
         public static final int txtLastName=0x7f09000d;
+        public static final int txtLength=0x7f09001b;
+        public static final int txtMuzzleVelocity=0x7f09001f;
+        public static final int txtProduced=0x7f090023;
         public static final int txtRangeDay=0x7f090009;
-        public static final int txtSearch=0x7f090012;
+        public static final int txtSearch=0x7f090013;
         public static final int txtShooterProfile=0x7f09000b;
-        public static final int txtWeaponInfo=0x7f090014;
+        public static final int txtSights=0x7f090018;
+        public static final int txtTitle=0x7f09001a;
+        public static final int txtType=0x7f090019;
+        public static final int txtVariant=0x7f090020;
+        public static final int txtWeaponInfo=0x7f090015;
         public static final int txtYearsShooting=0x7f090011;
     }
     public static final class layout {

@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainScreenActivity" >
+
+    <TextView
+        android:id="@+id/txtRangeDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtGunVault"
+        android:layout_centerVertical="true"
+        android:background="@drawable/range_day"
+        android:gravity="right"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/RangeDay"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/txtShooterProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtRangeDay"
+        android:layout_below="@+id/txtRangeDay"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/shooter"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/ShooterProfile"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/txtGunVault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtRangeDay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:background="@drawable/safe"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/GunVault"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40sp" />
+
+</RelativeLayout>

@@ -6,6 +6,9 @@ import java.util.Arrays;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
@@ -35,35 +38,51 @@ public class WeaponInfoActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_weapon_info);
 
-		weapon_id = getIntent().getExtras().getInt(Table.Weapon.ID);
-		loadCaliberInfo();
-		loadActionInfo();
-		loadCaliberCountry();
+		String Caliber = "Caliber";
+		String Guage12 = "\n12 Guage";
+		String Guage10 = "\n10 Guage";
+		String Guage20 = "\n20 Guage";
 
-		ExpandableListAdapter mAdapter;
-		ExpandableListView epView = (ExpandableListView) findViewById(R.id.elvWeaponInfo);
-		mAdapter = new MyExpandableListAdapter();
-		epView.setAdapter(mAdapter);
+		String Action = "Action";
+		String pump = "\nPump";
 
-		epView.setOnGroupClickListener(new OnGroupClickListener() {
-			@Override
-			public boolean onGroupClick(ExpandableListView arg0, View arg1, int groupPosition, long arg3) {
-				if (groupPosition == 5) {
+		TextView textView = (TextView) findViewById(R.id.txtCaliber);
+		Spannable span = new SpannableString(Caliber + Guage12 + Guage10 + Guage20);
+		span.setSpan(new RelativeSizeSpan(0.8f), Caliber.length(),
+				Caliber.length() + Guage12.length() + Guage10.length() + Guage20.length(),
+				Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		textView.setText(span);
 
-				}
-				return false;
-			}
-		});
-
-		epView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-			@Override
-			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-				if (groupPosition == 0 && childPosition == 0) {
-
-				}
-				return false;
-			}
-		});
+		textView = (TextView) findViewById(R.id.txtAction);
+		span = new SpannableString(Action + pump);
+		span.setSpan(new RelativeSizeSpan(0.8f), Action.length(), Action.length() + pump.length(),
+				Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		textView.setText(span);
+		
+		/*
+		 * weapon_id = getIntent().getExtras().getInt(Table.Weapon.ID);
+		 * loadCaliberInfo(); loadActionInfo(); loadCaliberCountry();
+		 * 
+		 * ExpandableListAdapter mAdapter; ExpandableListView epView =
+		 * (ExpandableListView) findViewById(R.id.elvWeaponInfo); mAdapter = new
+		 * MyExpandableListAdapter(); epView.setAdapter(mAdapter);
+		 * 
+		 * epView.setOnGroupClickListener(new OnGroupClickListener() {
+		 * 
+		 * @Override public boolean onGroupClick(ExpandableListView arg0, View
+		 * arg1, int groupPosition, long arg3) { if (groupPosition == 5) {
+		 * 
+		 * } return false; } });
+		 * 
+		 * epView.setOnChildClickListener(new
+		 * ExpandableListView.OnChildClickListener() {
+		 * 
+		 * @Override public boolean onChildClick(ExpandableListView parent, View
+		 * v, int groupPosition, int childPosition, long id) { if (groupPosition
+		 * == 0 && childPosition == 0) {
+		 * 
+		 * } return false; } });
+		 */
 	}
 
 	@Override

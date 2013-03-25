@@ -50,7 +50,7 @@ public class VaultActivity extends Activity {
 
 		Cursor curWeapons = DBHelper.getAllWeapons();
 		weapons = new ArrayList<Weapon>();
-		//weaponTable = new HashMap<String, Integer>();
+		// weaponTable = new HashMap<String, Integer>();
 		do {
 			String weapon = Utility.GetColumnValue(curWeapons, Table.Weapon.WEAPON);
 			Integer id = Integer.parseInt(Utility.GetColumnValue(curWeapons, Table.Weapon.ID));
@@ -59,7 +59,7 @@ public class VaultActivity extends Activity {
 			String type = Utility.GetColumnValue(curWeapons, Table.Weapon.TYPE);
 
 			weapons.add(new Weapon(weapon, info, image, type, id));
-			//weaponTable.put(weapon, id);
+			// weaponTable.put(weapon, id);
 		} while (curWeapons.moveToNext());
 
 		DBHelper.close();
@@ -69,7 +69,7 @@ public class VaultActivity extends Activity {
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
-				int weapon_id = 1;//weaponTable.get(lv.getItemAtPosition(position).toString());
+				int weapon_id = 1;// weaponTable.get(lv.getItemAtPosition(position).toString());
 				Log.i(TAG, lv.getItemAtPosition(position).toString());
 				Log.i(TAG, "weapon_id: " + weapon_id);
 				Toast.makeText(getApplicationContext(), String.valueOf(weapon_id), Toast.LENGTH_SHORT).show();
@@ -131,20 +131,22 @@ public class VaultActivity extends Activity {
 		weapons = new ArrayList<Weapon>();
 		do {
 			String weapon = Utility.GetColumnValue(curWeapons, Table.Weapon.WEAPON);
-			Integer id = Integer.parseInt(Utility.GetColumnValue(curWeapons, Table.Weapon.ID));
-			String image = Utility.GetColumnValue(curWeapons, Table.Weapon.IMAGE);
-			String info = Utility.GetColumnValue(curWeapons, Table.Weapon.INFO);
-			String type = Utility.GetColumnValue(curWeapons, Table.Weapon.TYPE);
-
-			weapons.add(new Weapon(weapon, info, image, type, id));
+			if (!weapon.equals("")) {
+				Integer id = Integer.parseInt(Utility.GetColumnValue(curWeapons, Table.Weapon.ID));
+				String image = Utility.GetColumnValue(curWeapons, Table.Weapon.IMAGE);
+				String info = Utility.GetColumnValue(curWeapons, Table.Weapon.INFO);
+				String type = Utility.GetColumnValue(curWeapons, Table.Weapon.TYPE);
+				weapons.add(new Weapon(weapon, info, image, type, id));
+			}
 		} while (curWeapons.moveToNext());
 
 		// Get a handle to the list view
 		ListView lv = (ListView) findViewById(R.id.lvwWeapons);
-
-		// Convert ArrayList to array
-		String[] arrWeapons = Arrays.copyOf(weapons.toArray(), weapons.toArray().length, String[].class);
-		lv.setAdapter(new ArrayAdapter<String>(VaultActivity.this, android.R.layout.simple_list_item_1, arrWeapons));
+		List<WeaponMap> weaponAndType = getData();
+		ListAdapter adapter = new WeaponListAdapter(this, weaponAndType, android.R.layout.simple_list_item_2,
+				new String[] { WeaponMap.KEY_WEAPON, WeaponMap.KEY_TYPE }, new int[] { android.R.id.text1,
+						android.R.id.text2 });
+		lv.setAdapter(adapter);
 		DBHelper.close();
 	}
 }

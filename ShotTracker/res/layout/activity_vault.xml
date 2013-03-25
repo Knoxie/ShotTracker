@@ -1,26 +1,32 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center|top"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
     tools:context=".VaultActivity" >
 
+     <ListView
+        android:id="@+id/lvwWeapons"
+        android:layout_below="@+id/txtSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+    
     <EditText
         android:id="@+id/txtSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/textView1"
         android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtSearch"
+        android:layout_alignBottom="@+id/txtSearch"
+        android:layout_alignParentLeft="true"
         android:text="@string/Search"
-        android:inputType="textPersonName" >
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <requestFocus />
-    </EditText>
-
-    <ListView
-        android:id="@+id/lvwWeapons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </ListView>
-
-</LinearLayout>
+</RelativeLayout>
