@@ -1,7 +1,3 @@
-CREATE TABLE [Type] (
-[id] INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,
-[type] nvARCHAR(50)  UNIQUE NOT NULL
-);
 CREATE TABLE [Manufacturer] (
 [id] INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,
 [manufacturer] nvARCHAR(50)  UNIQUE NOT NULL
@@ -58,16 +54,10 @@ CREATE TABLE [Weapon] (
 [id] INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,
 [weapon] NVARCHAR(50)  UNIQUE NOT NULL,
 [image] NVARCHAR(50)  UNIQUE NOT NULL,
-[info] TEXT  UNIQUE NOT NULL
+[info] TEXT  UNIQUE NOT NULL,
+[type] nvARCHAR(50)  NOT NULL
 );
 
-CREATE TABLE [WeaponType] (
-[weapon_id] iNTEGER  NOT NULL,
-[type_id] INTEGER  NOT NULL,
-PRIMARY KEY ([weapon_id],[type_id]),
-FOREIGN KEY(weapon_id) REFERENCES Weapon(id),
-FOREIGN KEY(type_id) REFERENCES Type(id)
-);
 CREATE TABLE [WeaponManufacturer] (
 [weapon_id] iNTEGER  NOT NULL,
 [manufacturer_id] INTEGER  NOT NULL,
@@ -156,5 +146,3 @@ PRIMARY KEY ([weapon_id],[country_id]),
 FOREIGN KEY(weapon_id) REFERENCES Weapon(id),
 FOREIGN KEY(country_id) REFERENCES Country(id)
 );
-
-

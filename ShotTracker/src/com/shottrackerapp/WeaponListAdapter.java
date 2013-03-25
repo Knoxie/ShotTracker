@@ -3,7 +3,7 @@ package com.shottrackerapp;
 import java.util.List;
 import java.util.Map;
 
-import com.shottrackerapp.obj.Weapon;
+import com.shottrackerapp.obj.WeaponMap;
 
 import android.content.Context;
 import android.view.View;
@@ -12,7 +12,7 @@ import android.widget.SimpleAdapter;
 
 public class WeaponListAdapter extends SimpleAdapter {
 
-	private List<Weapon> weapons;
+	private List<WeaponMap> weapons;
 	/*
 	* Alternating color list -- you could initialize this from anywhere.
 	* Note that the colors make use of the alpha here, otherwise they would be
@@ -27,7 +27,7 @@ public class WeaponListAdapter extends SimpleAdapter {
 	        String[] from, 
 	        int[] to) {
 	  super(context, weapons, resource, from, to);
-	  this.weapons = (List<Weapon>) weapons;
+	  this.weapons = (List<WeaponMap>) weapons;
 	}
 
 	@Override

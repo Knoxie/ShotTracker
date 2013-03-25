@@ -6,6 +6,7 @@ public class Table {
 		public static final String WEAPON = "weapon";
 		public static final String INFO = "info";
 		public static final String IMAGE = "image";
+		public static final String TYPE = "type";
 	}
 
 	public class Caliber {

@@ -4,7 +4,6 @@ import java.util.TreeSet;
 
 public class INSERT {
 
-	private static final String Type = "Type";
 	private static final String Manufacturer = "Manufacturer";
 	private static final String Produced = "Produced";
 	private static final String Variant = "Variant";
@@ -24,8 +23,7 @@ public class INSERT {
 	public static TreeSet<String> create_tables(Weapon weapon) {
 		TreeSet<String> output = new TreeSet<String>();
 
-		output.add(insert_Weapon(weapon.getWeapon(), weapon.getInfo(), weapon.getImage()));
-		output.addAll(insert_WeaponProperty(Type, weapon.getType()));
+		output.add(insert_Weapon(weapon.getWeapon(), weapon.getInfo(), weapon.getImage(), weapon.getType()));
 		output.addAll(insert_WeaponProperty(Manufacturer, weapon.getManufacturer()));
 		output.addAll(insert_WeaponProperty(Produced, weapon.getProduced()));
 		output.addAll(insert_WeaponProperty(Variant, weapon.getVariant()));
@@ -48,7 +46,6 @@ public class INSERT {
 	public static TreeSet<String> create_allkeytables(Weapon weapon) {
 		TreeSet<String> output = new TreeSet<String>();
 
-		output.addAll(insert_WeaponProperty_AllKey(Type, weapon.getWeapon(), weapon.getType()));
 		output.addAll(insert_WeaponProperty_AllKey(Manufacturer, weapon.getWeapon(), weapon.getManufacturer()));
 		output.addAll(insert_WeaponProperty_AllKey(Produced, weapon.getWeapon(), weapon.getProduced()));
 		output.addAll(insert_WeaponProperty_AllKey(Variant, weapon.getWeapon(), weapon.getVariant()));
@@ -64,7 +61,7 @@ public class INSERT {
 		output.addAll(insert_WeaponProperty_AllKey(FeedSystem, weapon.getWeapon(), weapon.getFeedSystem()));
 		output.addAll(insert_WeaponProperty_AllKey(Sights, weapon.getWeapon(), weapon.getSights()));
 		output.addAll(insert_WeaponProperty_AllKey(Country, weapon.getWeapon(), weapon.getCountry()));
-		
+
 		return output;
 	}
 
@@ -79,9 +76,10 @@ public class INSERT {
 		return output;
 	}
 
-	private static String insert_Weapon(String strWeapon, String info, String image) {
-		return "INSERT INTO Weapon (weapon,info,image) VALUES ('" + strWeapon.replace("'", "''") + "', '"
-				+ info.replace("'", "''") + "', '" + image.replace("'", "''") + "');";
+	private static String insert_Weapon(String strWeapon, String info, String image, String type) {
+		return "INSERT INTO Weapon (weapon,info,image,type) VALUES ('" + strWeapon.replace("'", "''") + "', '"
+				+ info.replace("'", "''") + "', '" + image.replace("'", "''") + "', '" + type.replace("'", "''")
+				+ "');";
 	}
 
 	private static TreeSet<String> insert_WeaponProperty(String strTableName, String[] properties) {

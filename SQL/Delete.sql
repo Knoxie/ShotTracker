@@ -1,4 +1,3 @@
-DELETE FROM WeaponType; 
 DELETE FROM WeaponManufacturer;
 DELETE FROM WeaponProduced; 
 DELETE FROM WeaponVariant; 
@@ -11,7 +10,6 @@ DELETE FROM WeaponMuzzleVelocity;
 DELETE FROM WeaponFeedSystem; 
 DELETE FROM WeaponSights; 
 DELETE FROM WeaponCountry; 
-DELETE FROM Type;
 DELETE FROM Manufacturer; 
 DELETE FROM Produced; 
 DELETE FROM Variant; 

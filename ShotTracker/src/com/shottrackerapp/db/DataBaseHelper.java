@@ -38,6 +38,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 				copyDataBase();
 				Log.i(TAG, "createDatabase database created");
 			} catch (IOException e) {
+				Log.e(TAG, e.getMessage());
 				throw new Error("ErrorCopyingDataBase");
 			}
 		}

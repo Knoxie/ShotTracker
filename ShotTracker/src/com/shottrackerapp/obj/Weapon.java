@@ -1,27 +1,57 @@
 package com.shottrackerapp.obj;
 
-import java.util.HashMap;
+public class Weapon {
 
-public class Weapon extends HashMap<String, String> {
-	private static final long serialVersionUID = 12872473L;
-	public String weapon;
-	public String type;
+	private String weapon, info, image, type;
+	private int id;
 
-	public static String KEY_WEAPON = "weapon";
-	public static String KEY_TYPE = "type";
-
-	public Weapon(String weapon, String type) {
+	public Weapon(String weapon, String info, String image, String type, int id) {
+		super();
 		this.weapon = weapon;
+		this.info = info;
+		this.image = image;
+		this.type = type;
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getWeapon() {
+		return weapon;
+	}
+
+	public void setWeapon(String weapon) {
+		this.weapon = weapon;
+	}
+
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
 		this.type = type;
 	}
 
-	@Override
-	public String get(Object k) {
-		String key = (String) k;
-		if (KEY_WEAPON.equals(key))
-			return weapon;
-		else if (KEY_TYPE.equals(key))
-			return type;
-		return null;
-	}
 }

@@ -28,13 +28,13 @@ import com.shottrackerapp.db.DataAdpater;
 import com.shottrackerapp.db.Table;
 import com.shottrackerapp.db.Utility;
 import com.shottrackerapp.obj.Weapon;
+import com.shottrackerapp.obj.WeaponMap;
 
 public class VaultActivity extends Activity {
 
 	private static final String TAG = "VaultActivity";
 
-	private List<String> weapons;
-	private Map<String, Integer> weaponTable;
+	private List<Weapon> weapons;
 	private DataAdpater DBHelper;
 	private TextView txtSearch;
 	private ListView lv;
@@ -49,13 +49,17 @@ public class VaultActivity extends Activity {
 		DBHelper.open();
 
 		Cursor curWeapons = DBHelper.getAllWeapons();
-		weapons = new ArrayList<String>();
-		weaponTable = new HashMap<String, Integer>();
+		weapons = new ArrayList<Weapon>();
+		//weaponTable = new HashMap<String, Integer>();
 		do {
 			String weapon = Utility.GetColumnValue(curWeapons, Table.Weapon.WEAPON);
 			Integer id = Integer.parseInt(Utility.GetColumnValue(curWeapons, Table.Weapon.ID));
-			weapons.add(weapon);
-			weaponTable.put(weapon, id);
+			String image = Utility.GetColumnValue(curWeapons, Table.Weapon.IMAGE);
+			String info = Utility.GetColumnValue(curWeapons, Table.Weapon.INFO);
+			String type = Utility.GetColumnValue(curWeapons, Table.Weapon.TYPE);
+
+			weapons.add(new Weapon(weapon, info, image, type, id));
+			//weaponTable.put(weapon, id);
 		} while (curWeapons.moveToNext());
 
 		DBHelper.close();
@@ -65,7 +69,8 @@ public class VaultActivity extends Activity {
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
-				int weapon_id = weaponTable.get(lv.getItemAtPosition(position).toString());
+				int weapon_id = 1;//weaponTable.get(lv.getItemAtPosition(position).toString());
+				Log.i(TAG, lv.getItemAtPosition(position).toString());
 				Log.i(TAG, "weapon_id: " + weapon_id);
 				Toast.makeText(getApplicationContext(), String.valueOf(weapon_id), Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent(VaultActivity.this, WeaponInfoActivity.class);
@@ -77,10 +82,10 @@ public class VaultActivity extends Activity {
 		// Convert ArrayList to array
 		// String[] arrWeapons = Arrays.copyOf(weapons.toArray(),
 		// weapons.toArray().length, String[].class);
-		List<Weapon> weaponAndType = getData();
+		List<WeaponMap> weaponAndType = getData();
 		ListAdapter adapter = new WeaponListAdapter(this, weaponAndType, android.R.layout.simple_list_item_2,
-				new String[] { Weapon.KEY_WEAPON, Weapon.KEY_TYPE },
-				new int[] { android.R.id.text1, android.R.id.text2 });
+				new String[] { WeaponMap.KEY_WEAPON, WeaponMap.KEY_TYPE }, new int[] { android.R.id.text1,
+						android.R.id.text2 });
 		lv.setAdapter(adapter);
 
 		txtSearch = ((TextView) findViewById(R.id.txtSearch));
@@ -113,20 +118,25 @@ public class VaultActivity extends Activity {
 		return true;
 	}
 
-	private List<Weapon> getData() {
-		List<Weapon> wepaonAndType = new ArrayList<Weapon>();
-		for (String strWeapon : weapons)
-			wepaonAndType.add(new Weapon(strWeapon, "Rifle"));
+	private List<WeaponMap> getData() {
+		List<WeaponMap> wepaonAndType = new ArrayList<WeaponMap>();
+		for (Weapon weapon : weapons)
+			wepaonAndType.add(new WeaponMap(weapon.getWeapon(), weapon.getType()));
 		return wepaonAndType;
 	}
 
 	public void refreshList(String text) {
 		DBHelper.open();
 		Cursor curWeapons = DBHelper.getSomeWeapons(text);
-		weapons = new ArrayList<String>();
+		weapons = new ArrayList<Weapon>();
 		do {
 			String weapon = Utility.GetColumnValue(curWeapons, Table.Weapon.WEAPON);
-			weapons.add(weapon);
+			Integer id = Integer.parseInt(Utility.GetColumnValue(curWeapons, Table.Weapon.ID));
+			String image = Utility.GetColumnValue(curWeapons, Table.Weapon.IMAGE);
+			String info = Utility.GetColumnValue(curWeapons, Table.Weapon.INFO);
+			String type = Utility.GetColumnValue(curWeapons, Table.Weapon.TYPE);
+
+			weapons.add(new Weapon(weapon, info, image, type, id));
 		} while (curWeapons.moveToNext());
 
 		// Get a handle to the list view

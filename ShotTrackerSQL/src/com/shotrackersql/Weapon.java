@@ -3,7 +3,9 @@ package com.shotrackersql;
 public class Weapon {
 
 	private String weapon;
-	private String[] type;
+	private String info;
+	private String image;
+	private String type;
 	private String[] manufacturer;
 	private String[] produced;
 	private String[] variant;
@@ -20,22 +22,15 @@ public class Weapon {
 	private String[] sights;
 	private String[] country;
 
-	private String info;
-	private String image;
-
 	private String tableSplit = "&&";
 	private String valueSplit = "!!";
-	
+
 	public Weapon(String input) {
 		String[] tables = input.split(tableSplit, -1);
 		weapon = tables[Columns.weapon.ordinal()];
 		info = tables[Columns.info.ordinal()];
 		image = tables[Columns.image.ordinal()];
-
-		if (tables[Columns.type.ordinal()].contains(valueSplit))
-			type = tables[Columns.type.ordinal()].split(valueSplit);
-		else
-			type = new String[] { tables[Columns.type.ordinal()] };
+		type = tables[Columns.type.ordinal()];
 
 		if (tables[Columns.manufacturer.ordinal()].contains(valueSplit))
 			manufacturer = tables[Columns.manufacturer.ordinal()].split(valueSplit);
@@ -100,9 +95,8 @@ public class Weapon {
 		weapon = weapon.trim();
 		info = info.trim();
 		image = image.trim();
+		type = type.trim();
 
-		for (int i = 0; i < type.length; i++)
-			type[i] = type[i].trim();
 		for (int i = 0; i < manufacturer.length; i++)
 			manufacturer[i] = manufacturer[i].trim();
 		for (int i = 0; i < produced.length; i++)
@@ -132,11 +126,11 @@ public class Weapon {
 			country[i] = country[i].trim();
 	}
 
-	public String[] getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(String[] type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 

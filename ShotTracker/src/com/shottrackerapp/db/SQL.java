@@ -3,8 +3,8 @@ package com.shottrackerapp.db;
 public class SQL {
 
 	//GunVault
-	public static final String ALL_WEAPONS = "SQL/GunVault/SELECT_Weapon_Type.sql";
-	public static final String SOME_WEAPONS = "SQL/GunVault/SELECT_LIKE_Weapon_Type.sql";
+	public static final String ALL_WEAPONS = "SQL/GunVault/SELECT_Weapon.sql";
+	public static final String SOME_WEAPONS = "SQL/GunVault/SELECT_LIKE_Weapon.sql";
 
 	//WeaponInfo
 	public static final String WEAPON_INFO = "SQL/WeaponInfo/SELECT_WeaponInfo.sql";
